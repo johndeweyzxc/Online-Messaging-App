@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .Activities {
+        @apply text-xl font-semibold tracking-wide text-red-500 text-center;
+    }
+    .SyncServer {
+        @apply p-2 pl-16 pr-16 mr-6 bg-green-500 text-white rounded-xl shadow-lg
+        text-lg tracking-wide font-semibold cursor-pointer border-2 border-solid 
+        border-green-500 hover:bg-green-600 hover:border-green-600
+        transition-all ease-in text-center whitespace-nowrap;
+    }
+}
