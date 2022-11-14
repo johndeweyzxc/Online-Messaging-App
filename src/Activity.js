@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./Style/activity.css";
+
 export default function Activity({
   UserLogs,
   setUserLogs,
@@ -75,11 +77,7 @@ export default function Activity({
     return (
       <div className='flex flex-col'>
         <div className='mb-4 bg-white p-4 h-full rounded-xl shadow-lg mr-6 flex flex-col'>
-          <div
-            className='
-            text-xl font-semibold tracking-wide text-red-500 text-center
-            '
-          >{`${UserLogs.length} Activities`}</div>
+          <div className='Activities'>{`${UserLogs.length} Activities`}</div>
           <div className='w-full h-[1px] bg-slate-300 mb-4 mt-1' />
           <div className='mb-2 overflow-auto'>
             {UserLogs.length === 0 ? (
@@ -89,14 +87,7 @@ export default function Activity({
             )}
           </div>
         </div>
-        <div
-          className='
-            p-2 pl-16 pr-16 mr-6 bg-green-500 text-white rounded-xl shadow-lg
-            text-lg tracking-wide font-semibold cursor-pointer border-2 border-solid 
-            border-green-500 hover:bg-green-600 hover:border-green-600
-            transition-all ease-in text-center whitespace-nowrap'
-          onClick={ServerSync}
-        >
+        <div className='SyncServer' onClick={ServerSync}>
           Sync with Server
         </div>
       </div>
