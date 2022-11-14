@@ -19,16 +19,19 @@ export default function MessageContent({
 
     if (val !== "") {
       try {
-        response = await fetch("http://localhost:4000/SendMessage", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            UserName: Name,
-            MessageContent: val,
-          }),
-        });
+        response = await fetch(
+          "https://online-messaging-api.vercel.app/SendMessage",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              UserName: Name,
+              MessageContent: val,
+            }),
+          }
+        );
       } catch (error) {
         console.log(error);
       }
@@ -42,7 +45,7 @@ export default function MessageContent({
             return [...prev, result.newMsg];
           });
           setUserLogs((prev) => {
-            return [result.newLogMsg, ...prev];
+            return [...prev, result.newLogMsg];
           });
         }
       }

@@ -16,7 +16,7 @@ function App() {
     // Localhost http://localhost:4000
 
     try {
-      response = await fetch("http://localhost:4000/Join", {
+      response = await fetch("https://online-messaging-api.vercel.app/Join", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

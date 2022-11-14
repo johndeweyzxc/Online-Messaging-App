@@ -6,9 +6,6 @@ export default function Activity({
   setMessages,
   Messages,
 }) {
-  console.log(UserLogs);
-  console.log(Messages);
-
   // Sync data from the server
   const ServerSync = async () => {
     let response;
@@ -19,16 +16,19 @@ export default function Activity({
       Messages.length === 0 ? "Empty" : Messages[Messages.length - 1].id;
 
     try {
-      response = await fetch("http://localhost:4000/GetUpdates", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          LatestMsgId: lastMsg,
-          LActivityId: lastUserLog,
-        }),
-      });
+      response = await fetch(
+        "https://online-messaging-api.vercel.app/GetUpdates",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            LatestMsgId: lastMsg,
+            LActivityId: lastUserLog,
+          }),
+        }
+      );
     } catch (error) {
       console.log(error);
     }
@@ -38,11 +38,11 @@ export default function Activity({
       let UpdatedAct = result.ActivityLog;
       let UpdatedMsg = result.SentMessages;
 
-      UpdatedAct = UpdatedAct === undefined ? [] : UpdatedAct;
-      UpdatedMsg = UpdatedMsg === undefined ? [] : UpdatedMsg;
+      UpdatedAct = UpdatedAct === undefined ? UserLogs : UpdatedAct;
+      UpdatedMsg = UpdatedMsg === undefined ? Messages : UpdatedMsg;
 
       setUserLogs((prev) => {
-        return [...UpdatedAct, ...prev];
+        return [...prev, ...UpdatedAct];
       });
       setMessages((prev) => {
         return [...prev, ...UpdatedMsg];
