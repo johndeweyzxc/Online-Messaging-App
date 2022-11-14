@@ -30,15 +30,24 @@ export default function Activity({ UserLogs, setUserLogs, setMessages, Messages 
       let UpdatedAct = result.ActivityLog;
       let UpdatedMsg = result.SentMessages;
 
-      UpdatedAct = UpdatedAct === undefined ? UserLogs : UpdatedAct;
-      UpdatedMsg = UpdatedMsg === undefined ? Messages : UpdatedMsg;
+      // console.log(UpdatedAct);
+      // console.log(UpdatedMsg);
 
-      setUserLogs((prev) => {
-        return [...prev, ...UpdatedAct];
-      });
-      setMessages((prev) => {
-        return [...prev, ...UpdatedMsg];
-      });
+      if (UpdatedAct === undefined) {
+        window.location.reload(false);
+      } else {
+        setUserLogs((prev) => {
+          return [...prev, ...UpdatedAct];
+        });
+      }
+
+      if (UpdatedMsg === undefined) {
+        window.location.reload(false);
+      } else {
+        setMessages((prev) => {
+          return [...prev, ...UpdatedMsg];
+        });
+      }
     }
   };
 
