@@ -1,2 +1,6 @@
 node_modules
 .prettierrc
+build
+.firebase
+.firebaserc
+firebase.json
