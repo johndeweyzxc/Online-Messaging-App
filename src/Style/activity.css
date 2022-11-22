@@ -7,9 +7,10 @@
         @apply text-xl font-semibold tracking-wide text-red-500 text-center;
     }
     .SyncServer {
-        @apply p-2 pl-16 pr-16 mr-6 bg-green-500 text-white rounded-xl shadow-lg
+        @apply p-2 px-16 mr-6 bg-green-500 text-white rounded-xl shadow-lg
         text-lg tracking-wide font-semibold cursor-pointer border-2 border-solid 
-        border-green-500 hover:bg-green-600 hover:border-green-600
-        transition-all ease-in text-center whitespace-nowrap;
+        border-green-500 hover:bg-green-600 hover:border-green-600 transition-all 
+        ease-in text-center whitespace-nowrap tablet:m-4 tablet:mb-6 tablet:p-1 
+        tablet:text-base tablet:rounded-md;
     }
 }
