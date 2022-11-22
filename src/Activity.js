@@ -30,9 +30,6 @@ export default function Activity({ UserLogs, setUserLogs, setMessages, Messages 
       let UpdatedAct = result.ActivityLog;
       let UpdatedMsg = result.SentMessages;
 
-      // console.log(UpdatedAct);
-      // console.log(UpdatedMsg);
-
       if (UpdatedAct === undefined) {
         window.location.reload(false);
       } else {
@@ -64,7 +61,14 @@ export default function Activity({ UserLogs, setUserLogs, setMessages, Messages 
   const IndividualActivity = (log) => {
     return (
       <div className="font-Quicksand" key={log.id}>
-        <div className="text-base font-medium mb-2 bg-slate-200 p-2 pl-4 pr-4 rounded-md">{log.msg}</div>
+        <div
+          className="
+        text-base font-medium mb-2 bg-slate-200 p-2 pl-4 pr-4 rounded-md
+        whitespace-nowrap
+        "
+        >
+          {log.msg}
+        </div>
       </div>
     );
   };
@@ -72,7 +76,7 @@ export default function Activity({ UserLogs, setUserLogs, setMessages, Messages 
   // The of activity created by the users
   const ListOfActivity = () => {
     return (
-      <div className="flex flex-col">
+      <div className="flex flex-col tablet:hidden">
         <div className="mb-4 bg-white p-4 h-full rounded-xl shadow-lg mr-6 flex flex-col">
           <div className="Activities">{`${UserLogs.length} Activities`}</div>
           <div className="w-full h-[1px] bg-slate-300 mb-4 mt-1" />
