@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 
 import "./Style/messages.css";
+import ApiRequest from "./ApiFunctions";
 
 export default function MessageContent({ Name, Messages, setMessages, setUserLogs }) {
   const inputRef = useRef();
@@ -8,43 +9,25 @@ export default function MessageContent({ Name, Messages, setMessages, setUserLog
   // Send a message to the server
   const SendMessage = async () => {
     const val = inputRef.current.value;
-    let response;
 
-    if (val === undefined) {
+    if (val === undefined || val === "") {
       return;
     }
 
-    if (val !== "") {
-      try {
-        response = await fetch("https://online-messaging-api.vercel.app/SendMessage", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            UserName: Name,
-            MessageContent: val,
-          }),
-        });
-      } catch (error) {
-        console.log(error);
-      }
+    const response = await ApiRequest.SendMsg(val, Name);
 
-      if (response) {
-        const result = await response.json();
-        if (response.status === 400) {
-          alert(result.Error);
-        } else {
-          setMessages((prev) => {
-            return [...prev, result.newMsg];
-          });
-          setUserLogs((prev) => {
-            return [...prev, result.newLogMsg];
-          });
-        }
+    if (response) {
+      const result = await response.json();
+      if (response.status === 400) {
+        alert(result.Error);
+      } else {
+        setMessages((prev) => {
+          return [...prev, result.newMsg];
+        });
+        setUserLogs((prev) => {
+          return [...prev, result.newLogMsg];
+        });
       }
-    } else {
-      return;
     }
   };
 
