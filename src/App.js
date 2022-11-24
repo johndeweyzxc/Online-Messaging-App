@@ -4,6 +4,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import Activity from "./Activity";
 import MessageContent from "./MessageContent";
 import SideBarActivity from "./SideBarActivity";
+import ApiRequest from "./ApiFunctions";
 
 function App() {
   const [Name, setName] = useState(null);
@@ -12,22 +13,8 @@ function App() {
   const [OpenNav, setOpenNav] = useState(false);
 
   // Join to the server
-  const JoinServer = async (Value) => {
-    let response;
-
-    try {
-      response = await fetch("https://online-messaging-api.vercel.app/Join", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          UserName: Value,
-        }),
-      });
-    } catch (error) {
-      console.log(error);
-    }
+  const JoinServer = async (UserName) => {
+    const response = await ApiRequest.InitiateJoin(UserName);
 
     if (response) {
       const result = await response.json();
