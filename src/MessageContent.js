@@ -56,14 +56,12 @@ export default function MessageContent({ Name, Messages, setMessages, setUserLog
   // This is the list of the message
   const MessageView = () => {
     return (
-      <div className="w-full h-full flex flex-col">
-        <div className="flex-grow mb-4">
-          <div
-            className="bg-white mb-4 rounded-xl shadow-lg p-4
-            min-h-full max-h-[28rem] overflow-auto"
-          >
-            {Messages.map(IndividualMessage)}
-          </div>
+      <div className="w-full h-full flex flex-col justify-between">
+        <div
+          className="bg-white mb-4 rounded-xl shadow-lg p-4
+            min-h-[32rem] h-full overflow-auto"
+        >
+          {Messages.map(IndividualMessage)}
         </div>
         <InputMessage />
       </div>

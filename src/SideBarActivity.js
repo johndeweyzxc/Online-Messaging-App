@@ -81,11 +81,11 @@ function SideBarActivity({ UserLogs, setUserLogs, setMessages, Messages, OpenNav
             <GrClose className="text-4xl" onClick={() => setOpenNav(false)} />
           </div>
 
-          <div className="mb-4 bg-white p-2 rounded-xl h-full">
+          <div className="bg-white p-2 rounded-xl h-auto">
             <div className="Activities">{`${UserLogs.length} Activities`}</div>
             <div className="w-full h-[1px] bg-slate-300 mb-4 mt-1" />
 
-            <div className="max-h-[28rem] h-[80%] overflow-auto">
+            <div className="min-h-[28rem] max-h-[28rem] overflow-auto">
               {UserLogs.length === 0 ? <NoActivity /> : UserLogs.map(IndividualActivity)}
             </div>
           </div>
