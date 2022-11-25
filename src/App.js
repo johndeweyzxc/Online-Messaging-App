@@ -45,15 +45,7 @@ function App() {
         <header className="bg-CoolBlue hidden tablet:block p-3 z-10">
           <GiHamburgerMenu className="text-4xl text-white" onClick={() => setOpenNav(true)} />
         </header>
-        <SideBarActivity
-          UserLogs={UserLogs}
-          setUserLogs={setUserLogs}
-          Messages={Messages}
-          setMessages={setMessages}
-          OpenNav={OpenNav}
-          setOpenNav={setOpenNav}
-        />
-        <div className={`flex p-6 h-full bg-slate-200 phone:p-4 tablet:${OpenNav ? "z-0" : "z-10"}`}>
+        <div className="flex p-6 h-full bg-slate-200 phone:p-4 tablet:z-10">
           <Activity
             UserLogs={UserLogs}
             setUserLogs={setUserLogs}
@@ -67,6 +59,14 @@ function App() {
             setUserLogs={setUserLogs}
           />
         </div>
+        <SideBarActivity
+          UserLogs={UserLogs}
+          setUserLogs={setUserLogs}
+          Messages={Messages}
+          setMessages={setMessages}
+          OpenNav={OpenNav}
+          setOpenNav={setOpenNav}
+        />
       </div>
     );
   }

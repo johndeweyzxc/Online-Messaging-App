@@ -67,7 +67,10 @@ function SideBarActivity({ UserLogs, setUserLogs, setMessages, Messages, OpenNav
   };
 
   return (
-    <div className={`h-screen w-screen absolute hidden tablet:flex ${OpenNav ? "z-10" : "z-0"}`}>
+    <div
+      className={`h-screen w-screen absolute hidden tablet:flex 
+       ${OpenNav ? "z-10" : "z-0 "}`}
+    >
       <div
         className={`bg-white shadow-2xl border-r-[1px] border-solid 
         border-slate-400 transition-all duration-300 ease-in-out
