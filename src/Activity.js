@@ -77,10 +77,11 @@ export default function Activity({ UserLogs, setUserLogs, setMessages, Messages 
   const ListOfActivity = () => {
     return (
       <div className="flex flex-col tablet:hidden">
-        <div className="mb-4 bg-white p-4 h-full rounded-xl shadow-lg mr-6 flex flex-col">
+        <div className="mb-4 bg-white p-4 rounded-xl shadow-lg mr-6 flex flex-col">
           <div className="Activities">{`${UserLogs.length} Activities`}</div>
           <div className="w-full h-[1px] bg-slate-300 mb-4 mt-1" />
-          <div className="mb-2 overflow-auto">
+
+          <div className="max-h-[28rem] h-full overflow-auto">
             {UserLogs.length === 0 ? <NoActivity /> : UserLogs.map(IndividualActivity)}
           </div>
         </div>
