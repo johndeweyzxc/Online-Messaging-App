@@ -58,7 +58,10 @@ export default function MessageContent({ Name, Messages, setMessages, setUserLog
     return (
       <div className="w-full h-full flex flex-col">
         <div className="flex-grow mb-4">
-          <div className="bg-white h-full mb-4 rounded-xl shadow-lg p-4">
+          <div
+            className="bg-white mb-4 rounded-xl shadow-lg p-4
+            min-h-full max-h-[28rem] overflow-auto"
+          >
             {Messages.map(IndividualMessage)}
           </div>
         </div>
