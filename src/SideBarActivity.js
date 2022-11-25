@@ -85,7 +85,7 @@ function SideBarActivity({ UserLogs, setUserLogs, setMessages, Messages, OpenNav
             <div className="Activities">{`${UserLogs.length} Activities`}</div>
             <div className="w-full h-[1px] bg-slate-300 mb-4 mt-1" />
 
-            <div className="max-h-[28rem] h-full overflow-auto">
+            <div className="max-h-[28rem] h-[80%] overflow-auto">
               {UserLogs.length === 0 ? <NoActivity /> : UserLogs.map(IndividualActivity)}
             </div>
           </div>
