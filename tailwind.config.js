@@ -12,6 +12,7 @@ module.exports = {
       },
       fontFamily: {
         Quicksand: ["Quicksand", "sans-serif"],
+        JetBrains: ["JetBrains mono", "monospace"],
       },
     },
   },
