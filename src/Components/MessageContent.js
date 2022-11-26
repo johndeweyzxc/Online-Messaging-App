@@ -57,12 +57,7 @@ export default function MessageContent({ Name, Messages, setMessages, setUserLog
   const MessageView = () => {
     return (
       <div className={`w-full h-full flex flex-col ${SelectedNav === "Messages" ? "block" : "hidden"}`}>
-        <div
-          className="bg-white mb-4 rounded-xl shadow-lg p-4
-            min-h-[32rem] max-h-[28rem] overflow-auto"
-        >
-          {Messages.map(IndividualMessage)}
-        </div>
+        <div className="IndividualMessage">{Messages.map(IndividualMessage)}</div>
         <InputMessage />
       </div>
     );

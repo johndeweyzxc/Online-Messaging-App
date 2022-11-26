@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer components {
+    .IndividualMessage {
+        @apply bg-white mb-4 rounded-xl shadow-lg p-4 min-h-[32rem] max-h-[28rem] 
+        overflow-auto;
+    }
     .InputMessage {
         @apply p-2 pl-4 pr-4 text-lg font-Quicksand outline-none w-full rounded-md shadow-lg
         border-2 border-solid border-white focus:border-CoolBlue phone:text-base;

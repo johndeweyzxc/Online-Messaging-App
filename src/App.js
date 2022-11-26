@@ -76,11 +76,6 @@ function App() {
     }
   };
 
-  // User previously used the app and has joined the server before.
-  if (localStorage.getItem("localName") && Name === null) {
-    JoinServer(localStorage.getItem("localName"));
-  }
-
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -107,6 +102,11 @@ function App() {
     { name: "Donate" },
     { name: "Sync with Server" },
   ];
+
+  // User previously used the app and has joined the server before.
+  if (localStorage.getItem("localName") && Name === null) {
+    JoinServer(localStorage.getItem("localName"));
+  }
 
   // The user is new to the app and has not joined the server before.
   if (Name === null && !localStorage.getItem("localName")) {
