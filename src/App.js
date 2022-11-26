@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
 
-import Activity from "./Activity";
-import MessageContent from "./MessageContent";
-import SideBarActivity from "./SideBarActivity";
+import ActivityLogs from "./Components/ActivityLogs";
+import MessageContent from "./Components/MessageContent";
 import ApiRequest from "./ApiFunctions";
 
 function App() {
   const [Name, setName] = useState(null);
   const [UserLogs, setUserLogs] = useState([]);
   const [Messages, setMessages] = useState([]);
-  const [OpenNav, setOpenNav] = useState(false);
+  const [SelectedNav, setNav] = useState("Messages");
 
   // Join to the server
   const JoinServer = async (UserName) => {
@@ -30,10 +31,82 @@ function App() {
     }
   };
 
+  // Sync data from the server
+  const ServerSync = async () => {
+    let response;
+
+    let lastUserLog = UserLogs.length === 0 ? "Empty" : UserLogs[UserLogs.length - 1].id;
+    let lastMsg = Messages.length === 0 ? "Empty" : Messages[Messages.length - 1].id;
+
+    try {
+      response = await fetch("https://online-messaging-api.vercel.app/GetUpdates", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          LatestMsgId: lastMsg,
+          LActivityId: lastUserLog,
+        }),
+      });
+    } catch (error) {
+      console.log(error);
+    }
+
+    if (response) {
+      const result = await response.json();
+      let UpdatedAct = result.ActivityLog;
+      let UpdatedMsg = result.SentMessages;
+
+      if (UpdatedAct === undefined) {
+        window.location.reload(false);
+      } else {
+        setUserLogs((prev) => {
+          return [...prev, ...UpdatedAct];
+        });
+      }
+
+      if (UpdatedMsg === undefined) {
+        window.location.reload(false);
+      } else {
+        setMessages((prev) => {
+          return [...prev, ...UpdatedMsg];
+        });
+      }
+    }
+  };
+
   // User previously used the app and has joined the server before.
   if (localStorage.getItem("localName") && Name === null) {
     JoinServer(localStorage.getItem("localName"));
   }
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const selectNav = (SelectedNav) => {
+    setAnchorEl(null);
+    if (SelectedNav === "Sync with Server") {
+      ServerSync();
+    } else {
+      setNav(SelectedNav);
+    }
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const NavMenu = [
+    { name: "Messages" },
+    { name: "Logs" },
+    { name: "About" },
+    { name: "Donate" },
+    { name: "Sync with Server" },
+  ];
 
   // The user is new to the app and has not joined the server before.
   if (Name === null && !localStorage.getItem("localName")) {
@@ -41,32 +114,46 @@ function App() {
     JoinServer(name);
   } else {
     return (
-      <div className="h-screen w-screen flex flex-col">
-        <header className="bg-CoolBlue hidden tablet:block p-3 z-10">
-          <GiHamburgerMenu className="text-4xl text-white" onClick={() => setOpenNav(true)} />
-        </header>
-        <div className="flex p-6 h-full bg-slate-200 phone:p-4 tablet:z-10">
-          <Activity
-            UserLogs={UserLogs}
-            setUserLogs={setUserLogs}
-            Messages={Messages}
-            setMessages={setMessages}
+      <div className="h-screen w-screen">
+        <div className="w-full bg-CoolBlue p-3 flex justify-start items-center">
+          <GiHamburgerMenu
+            className="text-4xl text-white cursor-pointer"
+            id="basic-button"
+            aria-controls={open ? "basic-menu" : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? "true" : undefined}
+            onClick={handleClick}
           />
+          <h2 className="ml-4 text-white font-JetBrains text-lg">{SelectedNav}</h2>
+          <Menu
+            id="basic-menu"
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            MenuListProps={{
+              "aria-labelledby": "basic-button",
+            }}
+            onClick={(event) => {
+              console.log((event.currentTarget.style.display = "none"));
+            }}
+          >
+            {NavMenu?.map((nav, i) => (
+              <MenuItem onClick={() => selectNav(nav?.name)} key={i}>
+                {nav?.name}
+              </MenuItem>
+            ))}
+          </Menu>
+        </div>
+        <div className="p-6 h-full bg-slate-300 phone:p-4">
           <MessageContent
+            SelectedNav={SelectedNav}
             Name={Name}
             Messages={Messages}
             setMessages={setMessages}
             setUserLogs={setUserLogs}
           />
+          <ActivityLogs SelectedNav={SelectedNav} UserLogs={UserLogs} />
         </div>
-        <SideBarActivity
-          UserLogs={UserLogs}
-          setUserLogs={setUserLogs}
-          Messages={Messages}
-          setMessages={setMessages}
-          OpenNav={OpenNav}
-          setOpenNav={setOpenNav}
-        />
       </div>
     );
   }
