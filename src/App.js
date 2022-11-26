@@ -144,7 +144,7 @@ function App() {
             ))}
           </Menu>
         </div>
-        <div className="p-6 h-full bg-slate-300 phone:p-4">
+        <div className="p-6 h-screen bg-slate-300 phone:p-4">
           <MessageContent
             SelectedNav={SelectedNav}
             Name={Name}
