@@ -133,9 +133,6 @@ function App() {
             MenuListProps={{
               "aria-labelledby": "basic-button",
             }}
-            onClick={(event) => {
-              console.log((event.currentTarget.style.display = "none"));
-            }}
           >
             {NavMenu?.map((nav, i) => (
               <MenuItem onClick={() => selectNav(nav?.name)} key={i}>
