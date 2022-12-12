@@ -5,11 +5,7 @@ import "../Styles/activities.css";
 export default function ActivityLogs({ SelectedNav, UserLogs }) {
   // Return this if there is no activity yet :(
   const NoActivity = () => {
-    return (
-      <div className="text-sm tracking-wide text-slate-400">
-        There is no activity yet, invite your friends!
-      </div>
-    );
+    return <div className="text-sm tracking-wide">There is no activity yet, invite your friends!</div>;
   };
 
   // Component for individual activity

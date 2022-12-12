@@ -6,6 +6,7 @@ import MenuItem from "@mui/material/MenuItem";
 import ActivityLogs from "./Components/ActivityLogs";
 import MessageContent from "./Components/MessageContent";
 import ApiRequest from "./ApiFunctions";
+import About from "./Components/About";
 
 function App() {
   const [Name, setName] = useState(null);
@@ -141,7 +142,11 @@ function App() {
             ))}
           </Menu>
         </div>
-        <div className="p-6 h-screen bg-slate-300 phone:p-4">
+        <div
+          className={`p-6 h-screen ${
+            SelectedNav === "Messages" ? "bg-slate-300" : "bg-white"
+          } phone:p-4`}
+        >
           <MessageContent
             SelectedNav={SelectedNav}
             Name={Name}
@@ -150,6 +155,7 @@ function App() {
             setUserLogs={setUserLogs}
           />
           <ActivityLogs SelectedNav={SelectedNav} UserLogs={UserLogs} />
+          <About SelectedNav={SelectedNav} />
         </div>
       </div>
     );

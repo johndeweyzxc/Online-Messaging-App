@@ -4,7 +4,7 @@
 
 @layer components {
     .IndividualActivity {
-        @apply text-base font-medium mb-2 bg-slate-200 p-2 pl-4 pr-4 rounded-md
+        @apply text-base font-medium mb-2 p-2 pl-4 pr-4 rounded-md
         whitespace-nowrap;
     }
 }
