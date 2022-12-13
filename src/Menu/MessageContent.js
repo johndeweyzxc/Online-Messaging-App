@@ -48,7 +48,9 @@ export default function MessageContent({ Name, Messages, setMessages, setUserLog
     return (
       <div key={msg.id} className="mb-4 w-max">
         <div className="text-xs text-slate-400 tracking-wider pl-2 mb-1">{msg.creator}</div>
-        <div className="bg-slate-200 p-2 pl-4 pr-4 rounded-full font-Quicksand">{msg.msg}</div>
+        <div className="bg-slate-200 p-2 pl-4 pr-4 rounded-full font-Nacelle tracking-wide">
+          {msg.msg}
+        </div>
       </div>
     );
   };

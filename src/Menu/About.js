@@ -2,7 +2,7 @@ import React from "react";
 
 export default function About({ SelectedNav }) {
   return (
-    <div className={`${SelectedNav === "About" ? "block" : "hidden"} font-Quicksand`}>
+    <div className={`${SelectedNav === "About" ? "block" : "hidden"} font-Nacelle tracking-wide`}>
       <h1 className="text-4xl font-bold mb-4 phone:text-3xl sphone:text-2xl">Online Messaging App</h1>
       <div className="text-xl sphone:text-lg mb-4">Hello! Welcome to my online messaging app</div>
       <div className="text-lg sphone:text-base mb-4">
@@ -16,7 +16,8 @@ export default function About({ SelectedNav }) {
         The Sync with the Server is where you can fetch or get update from the server. When clicked it
         will send your latest messages or logs to the server and the server will respond with a new data.
         It is important that you click this if you want to see if there is new messages. The app does not
-        use realtime communication or a web socket.
+        use realtime communication or a web socket, it also does not use any form of database so your
+        data is not being recorded. Messages and logs will disappear after some time.
       </div>
       <div className="text-lg sphone:text-base pb-8">
         Online Messaging App is open source, you can check out the frontend source code{" "}

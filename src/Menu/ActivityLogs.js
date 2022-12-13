@@ -11,7 +11,7 @@ export default function ActivityLogs({ SelectedNav, UserLogs }) {
   // Component for individual activity
   const IndividualActivity = (log) => {
     return (
-      <div className="font-Quicksand" key={log.id}>
+      <div className="font-Nacelle tracking-wide" key={log.id}>
         <div className="IndividualActivity">{log.msg}</div>
       </div>
     );
