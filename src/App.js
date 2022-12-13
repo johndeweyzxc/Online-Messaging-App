@@ -8,7 +8,7 @@ import MessageContent from "./Components/MessageContent";
 import ApiRequest from "./ApiFunctions";
 import About from "./Components/About";
 
-function App() {
+export default function App() {
   const [Name, setName] = useState(null);
   const [UserLogs, setUserLogs] = useState([]);
   const [Messages, setMessages] = useState([]);
@@ -161,5 +161,3 @@ function App() {
     );
   }
 }
-
-export default App;
