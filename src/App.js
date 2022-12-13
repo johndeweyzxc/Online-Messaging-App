@@ -3,10 +3,11 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 
-import ActivityLogs from "./Components/ActivityLogs";
-import MessageContent from "./Components/MessageContent";
+import ActivityLogs from "./Menu/ActivityLogs";
+import MessageContent from "./Menu/MessageContent";
+import Donation from "./Menu/Donation";
 import ApiRequest from "./ApiFunctions";
-import About from "./Components/About";
+import About from "./Menu/About";
 
 export default function App() {
   const [Name, setName] = useState(null);
@@ -125,7 +126,7 @@ export default function App() {
             aria-expanded={open ? "true" : undefined}
             onClick={handleClick}
           />
-          <h2 className="ml-4 text-white font-JetBrains text-lg">{SelectedNav}</h2>
+          <h2 className="ml-4 text-white font-Nacelle tracking-wide text-xl">{SelectedNav}</h2>
           <Menu
             id="basic-menu"
             anchorEl={anchorEl}
@@ -156,6 +157,7 @@ export default function App() {
           />
           <ActivityLogs SelectedNav={SelectedNav} UserLogs={UserLogs} />
           <About SelectedNav={SelectedNav} />
+          <Donation SelectedNav={SelectedNav} />
         </div>
       </div>
     );
