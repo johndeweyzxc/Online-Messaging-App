@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: "Nacelle";
+    src: url("../Assets/Fonts/Nacelle-Light.otf");
+}

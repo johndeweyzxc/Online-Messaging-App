@@ -12,8 +12,7 @@ module.exports = {
         sphone: { max: "280px" },
       },
       fontFamily: {
-        Quicksand: ["Quicksand", "sans-serif"],
-        JetBrains: ["JetBrains mono", "monospace"],
+        Nacelle: ["Nacelle", "sans-serif"],
       },
     },
   },
