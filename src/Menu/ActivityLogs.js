@@ -1,7 +1,5 @@
 import React from "react";
 
-import "../Styles/activities.css";
-
 export default function ActivityLogs({ SelectedNav, UserLogs }) {
   // Return this if there is no activity yet :(
   const NoActivity = () => {
@@ -12,7 +10,7 @@ export default function ActivityLogs({ SelectedNav, UserLogs }) {
   const IndividualActivity = (log) => {
     return (
       <div className="font-Nacelle tracking-wide" key={log.id}>
-        <div className="IndividualActivity">{log.msg}</div>
+        <div className="text-base font-medium mb-2 rounded-md whitespace-nowrap">{log.msg}</div>
       </div>
     );
   };

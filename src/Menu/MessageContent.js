@@ -1,6 +1,4 @@
 import React, { useRef } from "react";
-
-import "../Styles/messages.css";
 import ApiRequest from "../ApiFunctions";
 
 export default function MessageContent({ Name, Messages, setMessages, setUserLogs, SelectedNav }) {
@@ -35,8 +33,19 @@ export default function MessageContent({ Name, Messages, setMessages, setUserLog
   const InputMessage = () => {
     return (
       <div className="flex w-full">
-        <input className="InputMessage" placeholder={"Send a message"} ref={inputRef} type={"text"} />
-        <div onClick={SendMessage} className="Send">
+        <input
+          className="p-2 pl-4 pr-4 text-lg font-Nacelle tracking-wide outline-none w-full rounded-md 
+        shadow-lg border-2 border-solid border-white focus:border-CoolBlue phone:text-base"
+          placeholder={"Send a message"}
+          ref={inputRef}
+          type={"text"}
+        />
+        <div
+          onClick={SendMessage}
+          className="flex justify-center items-center p-2 pl-4 pr-4 text-lg bg-CoolBlue text-white
+        ml-6 rounded-md shadow-lg tracking-wide cursor-pointer hover:bg-blue-500 
+        transition-all ease-in phone:text-base font-Nacelle"
+        >
           Send
         </div>
       </div>
@@ -61,7 +70,9 @@ export default function MessageContent({ Name, Messages, setMessages, setUserLog
         SelectedNav === "Messages" ? "block" : "hidden"
       }`}
     >
-      <div className="IndividualMessage">{Messages.map(IndividualMessage)}</div>
+      <div className="bg-white mb-4 rounded-xl shadow-lg p-4 min-h-[90%] overflow-auto">
+        {Messages.map(IndividualMessage)}
+      </div>
       <InputMessage />
     </div>
   );
