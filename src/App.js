@@ -35,25 +35,7 @@ export default function App() {
 
   // Sync data from the server
   const ServerSync = async () => {
-    let response;
-
-    let lastUserLog = UserLogs.length === 0 ? "Empty" : UserLogs[UserLogs.length - 1].id;
-    let lastMsg = Messages.length === 0 ? "Empty" : Messages[Messages.length - 1].id;
-
-    try {
-      response = await fetch("https://online-messaging-api.vercel.app/GetUpdates", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          LatestMsgId: lastMsg,
-          LActivityId: lastUserLog,
-        }),
-      });
-    } catch (error) {
-      console.log(error);
-    }
+    const response = await ApiRequest.SyncWithServer(UserLogs, Messages);
 
     if (response) {
       const result = await response.json();
