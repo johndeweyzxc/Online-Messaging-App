@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       colors: {
         CoolBlue: "#00a2ff",
+        LightBlue: "#00aeff",
       },
       screens: {
         tablet: { max: "820px" },
