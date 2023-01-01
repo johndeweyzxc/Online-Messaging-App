@@ -3,6 +3,6 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: "Nacelle";
-    src: url("./Assets/Fonts/Nacelle-Light.otf");
+  font-family: "Nacelle";
+  src: url("../Fonts/Nacelle-Light.otf");
 }
