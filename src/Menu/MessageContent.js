@@ -35,7 +35,7 @@ export default function MessageContent({ Name, Messages, setMessages, setUserLog
       <div className="flex w-full">
         <input
           className="p-2 pl-4 pr-4 text-lg font-Nacelle tracking-wide outline-none w-full rounded-md 
-        shadow-lg border-2 border-solid border-white focus:border-CoolBlue phone:text-base"
+          shadow-lg border-2 border-solid border-white focus:border-CoolBlue phone:text-base"
           placeholder={"Send a message"}
           ref={inputRef}
           type={"text"}
@@ -43,8 +43,8 @@ export default function MessageContent({ Name, Messages, setMessages, setUserLog
         <div
           onClick={SendMessage}
           className="flex justify-center items-center p-2 pl-4 pr-4 text-lg bg-CoolBlue text-white
-        ml-6 rounded-md shadow-lg tracking-wide cursor-pointer hover:bg-blue-500 
-        transition-all ease-in phone:text-base font-Nacelle"
+          ml-6 self-center rounded-md shadow-lg tracking-wide cursor-pointer hover:bg-LightBlue
+          transition-all ease-in phone:text-base font-Nacelle"
         >
           Send
         </div>
