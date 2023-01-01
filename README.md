@@ -45,4 +45,4 @@ $firebase deploy
 ```
 
 <h3>Backend</h3>
-I use vercel to host the backend api you can check the source code here https://github.com/johndeweyzxc/Online-Messaging-API
+I use vercel to host the backend you can check the source code here https://github.com/johndeweyzxc/Online-Messaging-API
