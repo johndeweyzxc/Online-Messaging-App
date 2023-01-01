@@ -3,10 +3,10 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 
-import ActivityLogs from "./Menu/ActivityLogs";
-import MessageContent from "./Menu/MessageContent";
-import ApiRequest from "./ApiFunctions";
-import About from "./Menu/About";
+import ActivityLogs from "./Pages/ActivityLogs";
+import MessageContent from "./Pages/MessageContent";
+import ApiRequest from "./Utils/ApiFunctions";
+import About from "./Pages/About";
 
 export default function App() {
   const [Name, setName] = useState(null);

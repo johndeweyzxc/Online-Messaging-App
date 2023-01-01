@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import ApiRequest from "../ApiFunctions";
+import ApiRequest from "../Utils/ApiFunctions";
 
 export default function MessageContent({ Name, Messages, setMessages, setUserLogs, SelectedNav }) {
   const inputRef = useRef();
