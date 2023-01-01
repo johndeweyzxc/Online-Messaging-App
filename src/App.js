@@ -5,7 +5,6 @@ import MenuItem from "@mui/material/MenuItem";
 
 import ActivityLogs from "./Menu/ActivityLogs";
 import MessageContent from "./Menu/MessageContent";
-import Donation from "./Menu/Donation";
 import ApiRequest from "./ApiFunctions";
 import About from "./Menu/About";
 
@@ -80,10 +79,9 @@ export default function App() {
   };
 
   const NavMenu = [
+    { name: "About" },
     { name: "Messages" },
     { name: "Logs" },
-    { name: "About" },
-    { name: "Donate" },
     { name: "Sync with Server" },
   ];
 
@@ -139,7 +137,6 @@ export default function App() {
           />
           <ActivityLogs SelectedNav={SelectedNav} UserLogs={UserLogs} />
           <About SelectedNav={SelectedNav} />
-          <Donation SelectedNav={SelectedNav} />
         </div>
       </div>
     );
